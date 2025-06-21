@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* Custom Scrollbar Styles */
+/* Global custom scrollbar styles */
+html, body {
+  scrollbar-width: thin;
+  scrollbar-color: #22d3ee #0a1422; /* thumb, track */
+}
+
+/* Webkit browsers */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 12px;
+  background: #0a1422;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #22d3ee 0%, #0ea5e9 50%, #8b5cf6 100%);
+  border-radius: 8px;
+  border: 2px solid #0a1422;
+  min-height: 40px;
+  transition: background 0.3s;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #22d3ee 100%);
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: #0a1422;
+  border-radius: 8px;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0f172a;
+  overflow-x: hidden;
+}
+
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -10;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #0f172a, #0a0f1f);
+
+}
+
+.animated-bg::before,
+.animated-bg::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #0ea5e9,
+    #22d3ee,
+    #10b981,
+    #8b5cf6,
+    #0ea5e9
+  );
+  opacity: 0.12; /* was 0.06 */
+  animation: aurora 20s linear infinite;
+  filter: blur(120px); /* was 100px */
+  z-index: -1;
+}
+
+.animated-bg::after {
+  animation-delay: -10s;
+  opacity: 0.08; /* was 0.04 */
+}
+
+@keyframes aurora {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.4); /* more motion */
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
